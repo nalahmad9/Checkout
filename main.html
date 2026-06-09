@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css"/>
+    <title>Checkout</title>
+</head>
+<body>
+    <main>
+        <header>
+            <h1>Checkout</h1>
+        </header>
+
+        <section>
+            <h3>New user</h3>
+            <input type="button" value="Create account" class="buttonStyle" onclick="openModal()"/>
+            <h3>Already have an account</h3>
+            <input type="button" value="Access your account" class="buttonStyle" onclick="scrollToLogin()"/>
+        </section>
+
+        <section id="loginSection" style="margin-top: 50px;">
+            <p>E-mail</p>
+            <input type="email" id="loginEmail" placeholder="Your e-mail" class="text"/>
+            <span class="error-msg" id="loginEmail-error"></span>
+            <p>Password</p>
+            <input type="password" id="loginPassword" placeholder="Your password" class="text"/>
+            <span class="error-msg" id="loginPassword-error"></span>
+            <br>
+            <input type="button" value="Login to your account" class="buttonStyle" onclick="login()"/>
+        </section>
+    </main>
+
+
+    <div id="modal" class="modal-overlay">
+        <div class="modal-box">
+            <button class="close-btn" onclick="closeModal()">✕</button>
+           <div class="header"><h1>Create Account</h1></div>
+
+            <div class="flex">
+                <div>
+                    <p>First Name</p>
+                    <input type="text" id="firstName" placeholder="Your first name" class="textModalName" maxlength="20"/>
+                    <span class="error-msg" id="firstName-error"></span>
+                </div>
+                <div>
+                    <p>Last Name</p>
+                    <input type="text" id="lastName" placeholder="Your last name" class="textModalName" maxlength="20"/>
+                    <span class="error-msg" id="lastName-error"></span>
+                </div>
+            </div>
+
+            <p>E-mail</p>
+            <input type="email" id="email" placeholder="Your e-mail" class="textModal"/>
+            <span class="error-msg" id="email-error"></span>
+            <p>Phone Number</p>
+            <input type="text" id="phone" placeholder="+961 xx xxx xxx" class="textModal" maxlength="15"/>
+            <span class="error-msg" id="phone-error"></span>
+            <p>Password</p>
+            <input type="password" id="password" placeholder="Your password" class="textModal" minlength="8" pattern="^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[@$!%*?&]).{8,}$" title="At least 8 characters, must include letters and numbers"/>
+            <span class="error-msg" id="password-error"></span>
+            <br><br>
+            <input type="button" value="Create account" class="buttonModal" onclick="submitSignup()"/>
+        </div>
+    </div>
+
+
+<div id="paymentModal" class="modal-overlay">
+    <div class="modal-box">
+        <button class="close-btn" onclick="closePaymentModal()">✕</button>
+        <div class="header"><h1>Checkout</h1></div>
+
+
+        <div id="addressSection">
+            <h3>Shipping Address</h3>
+
+            <p>Street Address</p>
+            <input type="text" id="street" placeholder="123 Main Street" class="textModal"/>
+            <span class="error-msg" id="street-error"></span>
+
+            <p>City</p>
+            <input type="text" id="city" placeholder="Your city" class="textModal"/>
+            <span class="error-msg" id="city-error"></span>
+
+            <div class="flex">
+                <div>
+                    <p>Country</p>
+                    <input type="text" id="country" placeholder="Your country" class="textModalName"/>
+                    <span class="error-msg" id="country-error"></span>
+                </div>
+                <div>
+                    <p>Zip Code</p>
+                    <input type="text" id="zip" placeholder="12345" class="textModalName" maxlength="10"/>
+                    <span class="error-msg" id="zip-error"></span>
+                </div>
+            </div>
+            <br>
+            <input type="button" value="Continue to Payment" class="buttonModal" onclick="submitAddress()"/>
+        </div>
+
+
+        <div id="paymentSection" style="display:none;">
+            <h3>Payment Details</h3>
+
+            <p>Cardholder Name</p>
+            <input type="text" id="cardName" placeholder="Name on card" class="textModal"/>
+            <span class="error-msg" id="cardName-error"></span>
+
+            <p>Card Number</p>
+            <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" class="textModal" maxlength="19"/>
+            <span class="error-msg" id="cardNumber-error"></span>
+
+            <div class="flex">
+                <div>
+                    <p>Expiry Date</p>
+                    <input type="text" id="expiry" placeholder="MM/YY" class="textModalName" maxlength="5"/>
+                    <span class="error-msg" id="expiry-error"></span>
+                </div>
+                <div>
+                    <p>CVV</p>
+                    <input type="text" id="cvv" placeholder="123" class="textModalName" maxlength="3"/>
+                    <span class="error-msg" id="cvv-error"></span>
+                </div>
+            </div>
+            <br>
+
+            <div class="flex">
+                <input type="button" value="← Back" class="buttonBack" onclick="goBackToAddress()"/>
+                <input type="button" value="Pay Now" class="buttonModal" onclick="submitPayment()"/>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+<div id="successModal" class="modal-overlay">
+    <div class="modal-box" style="text-align: center;">
+        <div style="font-size: 70px;">🎉</div>
+        <h2 style="color: rgb(59, 59, 118);">Order Confirmed!</h2>
+        <p style="color: rgb(117, 117, 153);">Your payment was successful. Your order is now being prepared and will be delivered to your address within <strong>3-5 business days</strong>.</p>
+        <p style="color: rgb(117, 117, 153);">A confirmation will be sent to your email.</p>
+        <br>
+        <input type="button" value="Done 🎉" class="buttonModal" onclick="closeSuccessModal()"/>
+    </div>
+</div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
