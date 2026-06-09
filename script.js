@@ -6,7 +6,7 @@ function closeModal(){
     document.getElementById("modal").classList.remove("active");
 }
 
-// Helper functions
+
 function showError(fieldId, message) {
     document.getElementById(fieldId).classList.add("input-error");
     document.getElementById(fieldId + "-error").textContent = message;
