@@ -94,20 +94,20 @@ function validateLastName() {
 
 function submitSignup() {
 
-    const isEmailValid     = validateEmail();
-    const isPasswordValid  = validatePassword();
-    const isNameValid      = validateFirstName();
-    const isLastNameValid  = validateLastName();
-    const isPhoneValid     = validatePhone(); 
+    const isEmailValid = validateEmail();
+    const isPasswordValid = validatePassword();
+    const isNameValid = validateFirstName();
+    const isLastNameValid = validateLastName();
+    const isPhoneValid = validatePhone(); 
 
 
     if (isEmailValid && isPasswordValid && isNameValid && isLastNameValid && isPhoneValid) {
         const user = {
             firstName: document.getElementById("firstName").value.trim(),
-            lastName:  document.getElementById("lastName").value.trim(),
-            email:     document.getElementById("email").value.trim(),
-            password:  document.getElementById("password").value,
-            phone:     document.getElementById("phone").value.trim() 
+            lastName: document.getElementById("lastName").value.trim(),
+            email: document.getElementById("email").value.trim(),
+            password: document.getElementById("password").value,
+            phone: document.getElementById("phone").value.trim() 
         };
         localStorage.setItem("user", JSON.stringify(user));
         closeModal();
@@ -165,14 +165,14 @@ function validateLoginPassword() {
 }
 
 function login() {
-    const isEmailValid    = validateLoginEmail();
+    const isEmailValid = validateLoginEmail();
     const isPasswordValid = validateLoginPassword();
 
     if (!isEmailValid || !isPasswordValid) return;
 
-    const enteredEmail    = document.getElementById("loginEmail").value.trim();
+    const enteredEmail = document.getElementById("loginEmail").value.trim();
     const enteredPassword = document.getElementById("loginPassword").value;
-    const savedUser       = JSON.parse(localStorage.getItem("user"));
+    const savedUser = JSON.parse(localStorage.getItem("user"));
 
     if (!savedUser) {
         alert("No account found. Please create an account first.");
@@ -180,7 +180,7 @@ function login() {
     }
 
     if (enteredEmail === savedUser.email && enteredPassword === savedUser.password) {
-        document.getElementById("loginEmail").value    = "";
+        document.getElementById("loginEmail").value = "";
         document.getElementById("loginPassword").value = "";
         openPaymentModal();
     } else {
@@ -231,10 +231,10 @@ function validateZip() {
 
 
 function submitAddress() {
-    const isStreetValid  = validateStreet();
-    const isCityValid    = validateCity();
+    const isStreetValid = validateStreet();
+    const isCityValid = validateCity();
     const isCountryValid = validateCountry();
-    const isZipValid     = validateZip();
+    const isZipValid = validateZip();
 
     if (isStreetValid && isCityValid && isCountryValid && isZipValid) {
 
@@ -315,21 +315,21 @@ function closeSuccessModal() {
 
 
 function submitPayment() {
-    const isCardNameValid   = validateCardName();
+    const isCardNameValid = validateCardName();
     const isCardNumberValid = validateCardNumber();
-    const isExpiryValid     = validateExpiry();
-    const isCVVValid        = validateCVV();
+    const isExpiryValid = validateExpiry();
+    const isCVVValid = validateCVV();
 
     if (isCardNameValid && isCardNumberValid && isExpiryValid && isCVVValid) {
 
 
-        const btn    = document.querySelector("#paymentModal .buttonModal");
-        btn.value    = "Processing...";
+        const btn = document.querySelector("#paymentModal .buttonModal");
+        btn.value = "Processing...";
         btn.disabled = true;
         btn.style.opacity = "0.7";
 
         setTimeout(function() {
-            btn.value    = "Pay Now";
+            btn.value = "Pay Now";
             btn.disabled = false;
             btn.style.opacity = "1";
             closePaymentModal();
