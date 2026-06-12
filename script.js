@@ -322,8 +322,7 @@ function submitPayment() {
 
     if (isCardNameValid && isCardNumberValid && isExpiryValid && isCVVValid) {
 
-
-        const btn = document.querySelector("#paymentModal .buttonModal");
+        const btn = document.getElementById("payNowBtn");
         btn.value = "Processing...";
         btn.disabled = true;
         btn.style.opacity = "0.7";
@@ -334,6 +333,6 @@ function submitPayment() {
             btn.style.opacity = "1";
             closePaymentModal();
             openSuccessModal();
-        }, 1000);
+        }, 2000);
     }
 }
